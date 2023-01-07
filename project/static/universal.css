@@ -1,0 +1,8 @@
+body {
+padding: 1000;
+margin: 100;
+}
+html, body, #map {
+height: 100%;
+width: 100vw;
+}

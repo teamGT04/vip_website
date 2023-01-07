@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+find vip
+{% endblock %}
+{% block content %}
+<h1>list of vip</h1>
+    <table class="table table-hover table-dark">
+        <thead>
+        <tr>
+            <!-- Your Columns HERE -->
+
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">PLACE</th>
+            <th scope="col">OPTIONS</th>
+        </tr>
+    </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.place }}</td>
+                    <td>
+                        <button class="btn btn-outline btn-info">Track</button>
+                        <button class="btn btn-outline btn-success">stream</button>
+                    </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
