@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from geopy.geocoders import Nominatim
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 
 
@@ -18,6 +19,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vips.db'
 app.secret_key='399c7904b286c80964a73685'
 db= SQLAlchemy(app)
+bcrypt=Bcrypt(app)
 from project import routes
 #
 # class Item2(db.Model):

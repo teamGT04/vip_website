@@ -1,5 +1,5 @@
 from project import app
-from flask import render_template,redirect,url_for
+from flask import render_template,redirect,url_for,flash,get_flashed_messages
 from project.models import Item2,User
 
 from project import location
@@ -60,9 +60,9 @@ def register_page():
                               password_hash=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
-        return redirect(url_for('find_vip'))
+        return redirect(url_for('map'))
     if form.errors != {}: #If there are not errors from the validations
         for err_msg in form.errors.values():
-            print(f'There was an error with creating a user: {err_msg}')
+            flash(f'There was an error with creating a user: {err_msg}',category='danger')
 
-    return render_template('findvip.html', form=form)
+    return render_template('register.html', form=form)
