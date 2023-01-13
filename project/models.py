@@ -5,7 +5,7 @@ class User(db.Model):
     email_address=db.Column(db.String(length=50),nullable=False)
     password_hash=db.Column(db.String(length=60),nullable=False)
     #items=db.relationship('Item2', backref='owner',lazy=True)
-    vip=db.Column(db.Integer(),db.Foreignkey('item2.uid'))
+    #vip=db.Column(db.Integer(),db.Foreignkey('item2.uid'))
 
 class Item2(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -15,7 +15,7 @@ class Item2(db.Model):
     place = db.Column(db.String(length=1024), nullable=False)
     #owner=db.column(db.Integer(),db.Foreignkey())
     uid=db.Column(db.Integer(),unique=True)
-    owner=db.relationship('Item2', backref='relative',lazy=True)
+    #owner=db.relationship('Item2', backref='relative',lazy=True)
 
 
     def __repr__(self):

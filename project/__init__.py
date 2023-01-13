@@ -16,6 +16,7 @@ location = geolocator.geocode("Chennai")
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vips.db'
+app.secret_key='399c7904b286c80964a73685'
 db= SQLAlchemy(app)
 from project import routes
 #

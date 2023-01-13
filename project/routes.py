@@ -1,8 +1,10 @@
 from project import app
-from flask import render_template
-from project.models import Item2
+from flask import render_template,redirect,url_for
+from project.models import Item2,User
 
 from project import location
+from project.forms import RegisterForm
+from project import db
 
 @app.route('/')
 
@@ -47,3 +49,20 @@ def find_vip():
     # {'id': 3, 'name': 'raaaa', 'place': 'delhi'}
     # ]
     return render_template('findvip.html', items=items)
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register_page():
+    form = RegisterForm()
+    if form.validate_on_submit():
+        user_to_create = User(username=form.username.data,
+                              email_address=form.email_address.data,
+                              password_hash=form.password1.data)
+        db.session.add(user_to_create)
+        db.session.commit()
+        return redirect(url_for('find_vip'))
+    if form.errors != {}: #If there are not errors from the validations
+        for err_msg in form.errors.values():
+            print(f'There was an error with creating a user: {err_msg}')
+
+    return render_template('findvip.html', form=form)
