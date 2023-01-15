@@ -23,7 +23,7 @@ class Item2(db.Model):
     longitude = db.Column(db.Float(), nullable=False)
     place = db.Column(db.String(length=1024), nullable=False)
     #owner=db.column(db.Integer(),db.Foreignkey())
-    uid=db.Column(db.Integer(),unique=True)
+    #uid=db.Column(db.Integer(),unique=True)
     #owner=db.relationship('Item2', backref='relative',lazy=True)
 
 
