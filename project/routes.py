@@ -3,7 +3,7 @@ from flask import render_template,redirect,url_for,flash,get_flashed_messages
 from project.models import Item2,User
 
 from project import location
-from project.forms import RegisterForm
+from project.forms import RegisterForm,LoginForm
 from project import db
 
 @app.route('/')
@@ -66,3 +66,8 @@ def register_page():
             flash(f'There was an error with creating a user: {err_msg}',category='danger')
 
     return render_template('register.html', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login_page():
+    form = LoginForm()
+    return render_template('login.html', form=form)
