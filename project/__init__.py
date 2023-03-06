@@ -3,6 +3,9 @@ from geopy.geocoders import Nominatim
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask import Flask
+from flask.ext.mongoalchemy import MongoAlchemy
+
 
 geolocator = Nominatim(user_agent="MyApp")
 
