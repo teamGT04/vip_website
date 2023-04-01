@@ -60,6 +60,7 @@ crossorigin=""></script>
           {% endif %}
       </div>
     </nav>
+<p><b>welcome to GCC</b></p>
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
            {% for category, message in messages %}
@@ -86,6 +87,9 @@ L.marker([{{ marker['lat'] }}, {{ marker['lon'] }}]).addTo(map)
       body {
         background-color: #212121;
         color: white
+      }
+      p{
+      text-align:center;
       }
   </style>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rendering Local Images Using Flask</title>
+	<style>
+		img{
+			 display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			  width: 600px;
+			  height: 300px;
+		}
+		.flex-parent {
+		  display: flex;
+		}
+
+		.jc-center {
+		  justify-content: center;
+		}
+
+		button.margin-right {
+		  margin-right: 20px;
+		}
+	</style>
+</head>
+<body>
+<img src= "{{image}}" >
+
+<br>
+<br>
+<div class="flex-parent jc-center">
+  <button type="submit" class="green margin-right" onclick="myfunc()">Accept</button>
+  <button type="submit" class="magenta">Decline</button>
+</div>
+<script>
+	function myfunc(){
+		window.alert("Updated!!!");
+	}
+</script>
+</body>
+</html>

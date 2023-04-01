@@ -1,6 +1,9 @@
 from project import app
 from flask import render_template,redirect,url_for,flash,get_flashed_messages
 from project.models import Item2,User
+from flask_pymongo import PyMongo
+import pymongo
+import os
 
 from project import location
 from project.forms import RegisterForm,LoginForm
@@ -12,34 +15,23 @@ from flask_login import login_user
 @app.route('/home')
 def hello_world():
     return render_template('home.html')
-@app.route('/stany')
-def hello_world1():
-    return render_template('stany.html')
+
 
 @app.route('/maps')
 def map():
     markers = [
         {
-            'lat': location.latitude,
-            'lon': location.longitude,
+            'lat': 13.786914,
+            'lon': 79.672192,
             'popup': 'chennai'
         },
         {
-          'lat':12.965965,
-            'lon':80.125860,
-            'popup':'stany home'
+            'lat': 13.787914,
+            'lon': 79.673192,
+            'popup': 'chennai'
         },
-        {
-            'lat': 12.964696,
-            'lon': 80.109803,
-            'popup': 'my home'
 
-        },
-        {
-            'lat':13.022554,
-            'lon':80.167631,
-            'popup':'rams home'
-        }
+
     ]
     return render_template('map.html', markers=markers)
 
@@ -102,3 +94,17 @@ def stany_page():
             flash('Username and password are not match! Please try again', category='danger')
 
     return render_template('stany.html', form=form)
+
+client=pymongo.MongoClient('mongodb://admin:admin@10.147.18.11:27017/')
+
+crimedb=client['crimedb']
+
+crime = crimedb["crime"]
+
+img = os.path.join('static', 'img')
+@app.route('/rickroll')
+def home():
+    os.system("scp raspi@192.168.205.244:/images/latest.jpg ./static/img/")
+    file = os.path.join(img, 'latest.jpg')
+    return render_template('image_render.html', image=file)
+
